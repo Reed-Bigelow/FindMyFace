@@ -1,0 +1,6 @@
+framework module Pods_FindMyFace {
+  umbrella header "Pods-FindMyFace-umbrella.h"
+
+  export *
+  module * { export * }
+}

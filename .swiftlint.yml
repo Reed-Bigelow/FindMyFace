@@ -1,0 +1,43 @@
+disabled_rules: # rule identifiers to exclude from running
+  - force_cast
+  - force_try
+  - trailing_whitespace
+  - line_length
+  - type_name
+  - function_body_length
+  - todo
+  - identifier_name
+  - file_length
+  - type_body_length
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+
+# configurable rules can be customized from this configuration file
+# binary rules can set their severity level
+function_parameter_count:
+  - 5 # warning
+  
+opt_in_rules:
+  - explicit_init
+  - closure_spacing
+  - overridden_super_call
+  - redundant_nil_coalescing
+  - nimble_operator
+  - operator_usage_whitespace
+  - closure_end_indentation
+  - first_where
+  - prohibited_super_call
+  - empty_count
+    
+custom_rules:
+    empty_first_line:
+        name: "Empty First Line"
+        regex: '(^[ a-zA-Z ]*(?:protocol|extension|class|struct) (?!(?:var|let))[ a-zA-Z:]*\{\n *\S+)'
+        message: "There should be an empty line after a declaration"
+        severity: warning
+    comments_space:
+        name: "Space After Comment"
+        regex: '(^ *//\w+)'
+        message: "There should be a space after //"
+        severity: warning

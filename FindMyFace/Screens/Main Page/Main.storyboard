@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gBS-P5-VbI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Feed-->
+        <scene sceneID="JmF-p9-tdq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Feed" id="Eiv-IS-LaE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="Feed-Active" selectedImage="Feed-Active" id="aFc-sY-xl5">
+                        <color key="badgeColor" red="0.76102849289999996" green="1" blue="0.2161549646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8T5-Bv-azk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-965" y="557"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Jwp-O6-fCw">
+            <objects>
+                <tabBarController id="gBS-P5-VbI" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zmg-bm-4Mx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.30196078430000001" green="0.50588235290000005" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Eiv-IS-LaE" kind="relationship" relationship="viewControllers" id="HsN-e8-v6q"/>
+                        <segue destination="QpY-bZ-BeH" kind="relationship" relationship="viewControllers" id="AUR-I4-Iyc"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P9n-k4-OhR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-389" y="32"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="hGv-ON-alh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="QpY-bZ-BeH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="pvN-am-b1F"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8bs-Bz-AWo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="226" y="557"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Feed-Active" width="25" height="25"/>
+    </resources>
+</document>

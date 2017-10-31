@@ -43,7 +43,7 @@ class RestClientService: NSObject {
         
         // swiftlint:disable multiple_closures_with_trailing_closure
         upload(multipartFormData: { formData  in
-            formData.append(imageRepresentation, withName: "image", mimeType: "image/jpg")
+            formData.append(imageRepresentation, withName: "image", fileName: "image.jpg", mimeType: "image/jpg")
         }, usingThreshold: 1000, to: url, method: .post, headers: headers) { result in
             print(result)
         }

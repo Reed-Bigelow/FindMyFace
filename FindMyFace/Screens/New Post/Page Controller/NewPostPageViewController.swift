@@ -10,7 +10,13 @@ import UIKit
 
 protocol NewPostPageViewControllerDelegate: class {
     
-    func didMoveToNewPage(_ pageNumber: Int)
+    func didMoveToNewPage(_ screen: Screen)
+    func didTakePhoto(_ photo: UIImage)
+}
+
+enum Screen: Int {
+    case library
+    case photo
 }
 
 class NewPostPageViewController: UIPageViewController {
@@ -29,20 +35,32 @@ class NewPostPageViewController: UIPageViewController {
         dataSource = datasource
         delegate = self
         
-        move(to: 0)
+        // Assign the camera delegate
+        if let cameraVC = vcs.last as? NewPostCameraViewController {
+            cameraVC.delegate = self
+        }
+        
+        move(to: .library)
     }
     
     // MARK: - Public
-    func move(to pageNumber: Int) {
-        let direction: UIPageViewControllerNavigationDirection = pageNumber == 1 ? .forward: .reverse
-        setViewControllers([vcs[pageNumber]], direction: direction, animated: true, completion: nil)
+    func move(to pageNumber: Screen) {
+        let direction: UIPageViewControllerNavigationDirection = pageNumber == .library ? .forward: .reverse
+        setViewControllers([vcs[pageNumber.hashValue]], direction: direction, animated: true, completion: nil)
     }
 }
+extension NewPostPageViewController: NewPostCameraViewControllerDelegate {
+    
+    func didTakePhoto(_ photo: UIImage) {
+        pageDelegate?.didTakePhoto(photo)
+    }
+}
+
 extension NewPostPageViewController: UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if let firstVC = viewControllers?.first, let index = vcs.index(of: firstVC) {
-            pageDelegate?.didMoveToNewPage(index)
+            pageDelegate?.didMoveToNewPage(Screen(rawValue: index) ?? .library)
         }
     }
 }

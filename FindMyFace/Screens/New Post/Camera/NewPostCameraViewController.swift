@@ -9,6 +9,11 @@
 import AVFoundation
 import UIKit
 
+protocol NewPostCameraViewControllerDelegate: class {
+    
+    func didTakePhoto(_ photo: UIImage)
+}
+
 class NewPostCameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     // MARK: - Outlets
@@ -18,10 +23,12 @@ class NewPostCameraViewController: UIViewController, AVCapturePhotoCaptureDelega
     private var captureSession: AVCaptureSession?
     private var capturePhotoOutput: AVCapturePhotoOutput?
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    weak var delegate: NewPostCameraViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setup()
+        
+        setup()
     }
     
     // MARK: - Private
@@ -32,8 +39,8 @@ class NewPostCameraViewController: UIViewController, AVCapturePhotoCaptureDelega
         captureSession?.sessionPreset = .photo
         
         // Get the back camera
-        let backCamera = AVCaptureDevice.default(for: .video)
-        
+        let backCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front)
+
         // Input device
         var inputDevice: AVCaptureDeviceInput!
         inputDevice = try? AVCaptureDeviceInput(device: backCamera!)
@@ -63,10 +70,19 @@ class NewPostCameraViewController: UIViewController, AVCapturePhotoCaptureDelega
     
     // MARK: - Capture Photo Delegate
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        
+        // Create the image
         let image = UIImage(cgImage: (photo.cgImageRepresentation()?.takeRetainedValue())!, scale: 1.0, orientation: UIImageOrientation.right)
+        
+        // Alert that an image was added
+         delegate?.didTakePhoto(image)
+        
+        // Create the image view
         let view = UIImageView(image: image)
         view.contentMode = .scaleAspectFill
         view.frame = cameraPreviewView.frame
+        
+        // Add the image
         cameraPreviewView.addSubview(view)
     }
     

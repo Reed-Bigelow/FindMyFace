@@ -20,7 +20,7 @@ open class CachedImageView: UIImageView {
     private var urlStringForChecking: String?
     private var emptyImage: UIImage?
     
-    public convenience init(cornerRadius: CGFloat = 0, tapCallback: @escaping (() ->())) {
+    public convenience init(cornerRadius: CGFloat = 0, tapCallback: @escaping (() -> Void)) {
         self.init(cornerRadius: cornerRadius, emptyImage: nil)
         self.tapCallback = tapCallback
         isUserInteractionEnabled = true
@@ -31,7 +31,7 @@ open class CachedImageView: UIImageView {
         tapCallback?()
     }
     
-    private var tapCallback: (() -> ())?
+    private var tapCallback: (() -> Void)?
     
     public init(cornerRadius: CGFloat = 0, emptyImage: UIImage? = nil) {
         super.init(frame: .zero)
@@ -52,7 +52,7 @@ open class CachedImageView: UIImageView {
      - parameter completion: Optionally execute some task after the image download completes
      */
 
-    open func loadImage(urlString: String, completion: (() -> ())? = nil) {
+    open func loadImage(urlString: String, completion: (() -> Void)? = nil) {
         image = nil
         
         self.urlStringForChecking = urlString
@@ -71,7 +71,8 @@ open class CachedImageView: UIImageView {
             }
             return
         }
-        URLSession.shared.dataTask(with: url, completionHandler: { [weak self] (data, response, error) in
+        
+        URLSession.shared.dataTask(with: url, completionHandler: { [weak self] (data, _, error) in
             if error != nil {
                 return
             }

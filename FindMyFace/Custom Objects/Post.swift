@@ -19,7 +19,6 @@ class Post: Mappable {
     var profileImageUrl: String?
     var faceLocations: [FaceLocation]?
     
-    
     required convenience init?(map: Map) {
         self.init()
     }

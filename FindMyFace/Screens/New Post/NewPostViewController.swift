@@ -18,24 +18,25 @@ class NewPostViewController: UIViewController {
     
     // MARK: - Properties
     private var newPostPageViewController: NewPostPageViewController?
+    private var currentPhoto: UIImage?
     
     // MARK: - Private
-    fileprivate func adjustNavigationButtons(to page: Int) {
-        libraryButton.titleLabel?.textColor = page == 0 ? #colorLiteral(red: 0.4120000005, green: 0.4120000005, blue: 0.4120000005, alpha: 1): #colorLiteral(red: 0.6669999957, green: 0.6669999957, blue: 0.6669999957, alpha: 1)
-        photoButton.titleLabel?.textColor = page == 1 ? #colorLiteral(red: 0.4120000005, green: 0.4120000005, blue: 0.4120000005, alpha: 1): #colorLiteral(red: 0.6669999957, green: 0.6669999957, blue: 0.6669999957, alpha: 1)
+    fileprivate func adjustNavigationButtons(to screen: Screen) {
+        libraryButton.titleLabel?.textColor = screen == .library ? #colorLiteral(red: 0.4120000005, green: 0.4120000005, blue: 0.4120000005, alpha: 1): #colorLiteral(red: 0.6669999957, green: 0.6669999957, blue: 0.6669999957, alpha: 1)
+        photoButton.titleLabel?.textColor = screen == .photo ? #colorLiteral(red: 0.4120000005, green: 0.4120000005, blue: 0.4120000005, alpha: 1): #colorLiteral(red: 0.6669999957, green: 0.6669999957, blue: 0.6669999957, alpha: 1)
     }
     
-    private func move(to pageNumber: Int) {
-        adjustNavigationButtons(to: pageNumber)
-        newPostPageViewController?.move(to: pageNumber)
+    private func move(to screen: Screen) {
+        adjustNavigationButtons(to: screen)
+        newPostPageViewController?.move(to: screen)
     }
     
     // MARK: - Actions
     @IBAction func libraryAction(_ sender: Any) {
-        move(to: 0)
+        move(to: .library)
     }
     @IBAction func photoAction(_ sender: Any) {
-        move(to: 1)
+        move(to: .photo)
     }
     
     @IBAction func cancelAction(_ sender: Any) {
@@ -43,7 +44,11 @@ class NewPostViewController: UIViewController {
     }
     
     @IBAction func postAction(_ sender: Any) {
-        RestClientService.uploadData(with: #imageLiteral(resourceName: "Camera-Active"), ["user_id": "8dd5fe13-1273-4138-b1ec-ac168b2480b5"])
+        guard let image = currentPhoto else {
+            return
+        }
+        
+        RestClientService.uploadData(with: image, ["user_id": "8dd5fe13-1273-4138-b1ec-ac168b2480b5"])
     }
     
     // MARK: - Navigation
@@ -56,7 +61,11 @@ class NewPostViewController: UIViewController {
 }
 extension NewPostViewController: NewPostPageViewControllerDelegate {
     
-    func didMoveToNewPage(_ pageNumber: Int) {
-        adjustNavigationButtons(to: pageNumber)
+    func didTakePhoto(_ photo: UIImage) {
+        currentPhoto = photo
+    }
+    
+    func didMoveToNewPage(_ screen: Screen) {
+        adjustNavigationButtons(to: screen)
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import ObjectMapper
 
-class Feed: Mappable  {
+class Feed: Mappable {
     
     // MARK: - Properties
     var posts: [Post]?

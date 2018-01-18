@@ -14,3 +14,9 @@ This application is a proof of concept on using a face recognition for all authe
 
 ### Future development
 Some of the future development that could develop this application into a more realistic application is looking into devices that have a more secure face scanning or using retinal scanning. This could mean that with the development of the iPhone X and Samsungs Note line having retinal scanning it could be adapted to those devices with a more secure footing.
+
+### Credits
+* [Swiftlint](https://github.com/realm/SwiftLint)
+* [Alamofire](https://github.com/Alamofire/Alamofire)
+* [AlamofireObjectMapper](https://github.com/tristanhimmelman/AlamofireObjectMapper)
+* [FCUUID](https://github.com/fabiocaccamo/FCUUID)

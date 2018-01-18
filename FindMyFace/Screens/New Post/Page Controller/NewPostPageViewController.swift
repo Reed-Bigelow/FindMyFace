@@ -36,7 +36,8 @@ class NewPostPageViewController: UIPageViewController {
         delegate = self
         
         // Assign the camera delegate
-        if let cameraVC = vcs.last as? NewPostCameraViewController {
+        if let libraryVC = vcs.first as? NewPostLibraryViewController, let cameraVC = vcs.last as? NewPostCameraViewController {
+            libraryVC.delegate = self
             cameraVC.delegate = self
         }
         
@@ -45,7 +46,7 @@ class NewPostPageViewController: UIPageViewController {
     
     // MARK: - Public
     func move(to pageNumber: Screen) {
-        let direction: UIPageViewControllerNavigationDirection = pageNumber == .library ? .forward: .reverse
+        let direction: UIPageViewControllerNavigationDirection = pageNumber == .photo ? .forward: .reverse
         setViewControllers([vcs[pageNumber.hashValue]], direction: direction, animated: true, completion: nil)
     }
 }
@@ -55,7 +56,12 @@ extension NewPostPageViewController: NewPostCameraViewControllerDelegate {
         pageDelegate?.didTakePhoto(photo)
     }
 }
-
+extension NewPostPageViewController: NewPostLibraryViewControllerDelegate {
+    
+    func didSelectPhoto(_ photo: UIImage) {
+        pageDelegate?.didTakePhoto(photo)
+    }
+}
 extension NewPostPageViewController: UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {

@@ -12,8 +12,9 @@ class FeedViewController: UIViewController {
     
     // MARK: - Properties
     private let refreshControl = UIRefreshControl()
+    private var posts: [Post]?
     private lazy var datasource: FeedDataSource = {
-        FeedDataSource()
+        FeedDataSource(self)
     }()
     
     // MARK: - Outlets
@@ -26,18 +27,22 @@ class FeedViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        reloadData()
+    }
+    
     // MARK: - Private
     private func setup() {
         // Add datasource
         collectionView.dataSource = datasource
         collectionView.delegate = self
+        collectionView.registerNib(FeedItemCellView.self)
         
         // Add refresh control
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
-        
-        // Reload the data
-        reloadData()
     }
     
     @objc private func reloadData() {
@@ -46,8 +51,9 @@ class FeedViewController: UIViewController {
         refreshControl.beginRefreshing()
         
         // Get the data
-        RestClientService.request(Feed.self, ["date": Date().utcString()]) { _, feedItem in
-            if let tableFeed = feedItem as? Feed, let posts = tableFeed.posts {
+        RestClientService.request(Feed.self, .feed, ["date": "\(Date().timeIntervalSince1970)"]) { _, feedItem in
+            if let tableFeed = feedItem, let posts = tableFeed.posts {
+                self.posts = posts
                 self.datasource.refresh(with: posts)
                 self.collectionView.reloadData()
                 self.refreshControl.endRefreshing()
@@ -65,6 +71,20 @@ class FeedViewController: UIViewController {
 extension FeedViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: Constants.ScreenDimensions.WIDTH - 20, height: Constants.ScreenDimensions.WIDTH + 80)
+        return CGSize(width: Constants.ScreenDimensions.WIDTH, height: Constants.ScreenDimensions.WIDTH + 194)
+    }
+}
+extension FeedViewController: FeedItemCellViewDelegate {
+    
+    func didTapProfile(_ userId: String) {
+        let vC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ProfileView") as! ProfileViewController
+        vC.setup(with: userId)
+        navigationController?.pushViewController(vC, animated: true)
+    }
+    
+    func didSelectViewComments(for post: Post) {
+        let vc = UIStoryboard(name: "Comments", bundle: nil).instantiateInitialViewController() as! CommentsViewController
+        vc.postId = post.id ?? ""
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

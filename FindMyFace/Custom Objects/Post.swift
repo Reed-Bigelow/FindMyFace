@@ -17,6 +17,7 @@ class Post: Mappable {
     var userId: String?
     var username: String?
     var profileImageUrl: String?
+    var timestamp: Date?
     var faceLocations: [FaceLocation]?
     
     required convenience init?(map: Map) {
@@ -29,6 +30,7 @@ class Post: Mappable {
         userId: String,
         username: String,
         profileImageUrl: String,
+        timestamp: Date,
         faceLocations: [FaceLocation]) {
         
         self.init()
@@ -38,6 +40,7 @@ class Post: Mappable {
         self.userId = userId
         self.username = username
         self.profileImageUrl = profileImageUrl
+        self.timestamp = timestamp
         self.faceLocations = faceLocations
     }
     
@@ -45,8 +48,9 @@ class Post: Mappable {
         id <- map["id"]
         imageUrl <- map["url"]
         userId <- map["user_id"]
-        username <- map["name"]
+        username <- map["username"]
         profileImageUrl <- map["profile_image_url"]
+        timestamp <- (map["timestamp"], DateTransform())
         faceLocations <- map["face_locations"]
     }
 }

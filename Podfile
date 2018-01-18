@@ -10,7 +10,9 @@ target 'FindMyFace' do
   pod 'SwiftLint'
   pod 'Alamofire'
   pod 'AlamofireObjectMapper'
-
+  pod 'FCUUID'
+  2
+  
   target 'FindMyFaceTests' do
     inherit! :search_paths
     # Pods for testing

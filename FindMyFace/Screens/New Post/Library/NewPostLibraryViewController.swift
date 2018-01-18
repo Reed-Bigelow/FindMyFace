@@ -9,6 +9,11 @@
 import UIKit
 import Photos
 
+protocol NewPostLibraryViewControllerDelegate: class {
+    
+    func didSelectPhoto(_ photo: UIImage)
+}
+
 class NewPostLibraryViewController: UIViewController {
     
     // MARK: - Outlets
@@ -22,6 +27,7 @@ class NewPostLibraryViewController: UIViewController {
         PhotoLibraryCollectionDataSource()
     }()
     private var images = [UIImage]()
+    weak var delegate: NewPostLibraryViewControllerDelegate?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -98,9 +104,13 @@ class NewPostLibraryViewController: UIViewController {
     }
     
     private func setSelectedImage(for item: Int) {
+        let image = PHPhotoLibrary.shared().image(at: item)
+        
         DispatchQueue.main.async {
-            self.selectedImage.image = PHPhotoLibrary.shared().image(at: item)
+            self.selectedImage.image = image
         }
+        
+        delegate?.didSelectPhoto(image)
     }
     
     private func deselectAllCells() {

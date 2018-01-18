@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J5b-mT-NE4">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Users Photos Results View Controller-->
+        <scene sceneID="oua-pJ-ePc">
+            <objects>
+                <viewController id="J5b-mT-NE4" customClass="UsersPhotosResultsViewController" customModule="FindMyFace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lIK-pa-bWM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0vV-Zp-hiQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="3Td-uL-wUQ">
+                                    <size key="itemSize" width="120" height="120"/>
+                                    <size key="headerReferenceSize" width="50" height="134"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UsersPhotosResultsCollectionViewCell" id="soA-33-yLa" customClass="UsersPhotosResultsCollectionViewCell" customModule="FindMyFace" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="135" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E92-sD-Uvr" customClass="CachedImageView" customModule="FindMyFace" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="E92-sD-Uvr" secondAttribute="bottom" id="Wcf-ah-IpJ"/>
+                                            <constraint firstItem="E92-sD-Uvr" firstAttribute="leading" secondItem="soA-33-yLa" secondAttribute="leading" id="Xsr-Ue-KoB"/>
+                                            <constraint firstAttribute="trailing" secondItem="E92-sD-Uvr" secondAttribute="trailing" id="a5I-2a-aK3"/>
+                                            <constraint firstItem="E92-sD-Uvr" firstAttribute="top" secondItem="soA-33-yLa" secondAttribute="top" id="c7E-ie-NAE"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="E92-sD-Uvr" id="fkj-Ku-jfT"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="UsersResultsCollectionReusableView" id="QIr-ID-x7C" customClass="UsersResultsCollectionReusableView" customModule="FindMyFace" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5VJ-hf-zpW" customClass="CachedImageView" customModule="FindMyFace" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="5VJ-hf-zpW" secondAttribute="height" multiplier="1:1" id="Ias-bE-NFM"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQR-ZW-vj8">
+                                            <rect key="frame" x="8" y="8" width="359" height="118"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="RQR-ZW-vj8" secondAttribute="trailing" id="7Gn-uY-gSR"/>
+                                        <constraint firstItem="5VJ-hf-zpW" firstAttribute="top" secondItem="QIr-ID-x7C" secondAttribute="top" id="F8g-9c-7Az"/>
+                                        <constraint firstItem="5VJ-hf-zpW" firstAttribute="leading" secondItem="QIr-ID-x7C" secondAttribute="leading" id="I60-vB-ehF"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="RQR-ZW-vj8" secondAttribute="bottom" id="NY3-WP-McL"/>
+                                        <constraint firstItem="RQR-ZW-vj8" firstAttribute="top" secondItem="QIr-ID-x7C" secondAttribute="topMargin" id="WUl-Ee-tBK"/>
+                                        <constraint firstAttribute="trailing" secondItem="5VJ-hf-zpW" secondAttribute="trailing" id="nvx-Sv-Nzv"/>
+                                        <constraint firstItem="RQR-ZW-vj8" firstAttribute="leading" secondItem="QIr-ID-x7C" secondAttribute="leadingMargin" id="trK-jP-JrN"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="imageView" destination="5VJ-hf-zpW" id="wgs-s7-ZDH"/>
+                                        <outlet property="usersLabel" destination="RQR-ZW-vj8" id="Qun-0I-rus"/>
+                                    </connections>
+                                </collectionReusableView>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="B3k-Um-kyN" firstAttribute="trailing" secondItem="0vV-Zp-hiQ" secondAttribute="trailing" id="DFL-3s-tMA"/>
+                            <constraint firstItem="B3k-Um-kyN" firstAttribute="bottom" secondItem="0vV-Zp-hiQ" secondAttribute="bottom" id="IJA-sm-5BU"/>
+                            <constraint firstItem="0vV-Zp-hiQ" firstAttribute="leading" secondItem="B3k-Um-kyN" secondAttribute="leading" id="l8F-DC-inm"/>
+                            <constraint firstItem="0vV-Zp-hiQ" firstAttribute="top" secondItem="B3k-Um-kyN" secondAttribute="top" id="qIR-WH-f6Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="B3k-Um-kyN"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="0vV-Zp-hiQ" id="xIr-jD-AvV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jY0-9U-iiT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="296.80000000000001" y="36.431784107946029"/>
+        </scene>
+    </scenes>
+</document>

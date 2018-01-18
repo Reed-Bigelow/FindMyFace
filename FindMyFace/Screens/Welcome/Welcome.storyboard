@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iKJ-u4-NJW">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="B8Z-ES-6RD">
+            <objects>
+                <navigationController id="iKJ-u4-NJW" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KQf-NC-qMk">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="WEW-E2-fpu" kind="relationship" relationship="rootViewController" id="v5D-pN-62D"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9E5-aY-5bz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-361" y="148"/>
+        </scene>
+        <!--Check For Account View Controller-->
+        <scene sceneID="k70-Ou-eyW">
+            <objects>
+                <viewController id="WEW-E2-fpu" customClass="CheckForAccountViewController" customModule="FindMyFace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W0a-qU-JRE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome, please take a photo to link your account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdd-tu-064">
+                                <rect key="frame" x="0.0" y="74" width="375" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="MPA-Iq-uEE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmB-R0-Jjr">
+                                <rect key="frame" x="0.0" y="121" width="375" height="375"/>
+                                <color key="backgroundColor" red="0.44975781440000001" green="0.65629261729999999" blue="0.96761590239999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iXN-33-Fam">
+                                <rect key="frame" x="0.0" y="496" width="375" height="171"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jx-lx-aJ9">
+                                        <rect key="frame" x="149.5" y="47.5" width="75" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="d8C-fr-9Su"/>
+                                            <constraint firstAttribute="width" secondItem="4jx-lx-aJ9" secondAttribute="height" multiplier="1:1" id="y5p-Ya-R0s"/>
+                                        </constraints>
+                                        <state key="normal" image="Camera-Button"/>
+                                        <connections>
+                                            <action selector="captureButton:" destination="WEW-E2-fpu" eventType="touchUpInside" id="spS-kv-Au7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iXN-33-Fam" secondAttribute="height" multiplier="125:57" id="2ei-JC-fc0"/>
+                                    <constraint firstItem="4jx-lx-aJ9" firstAttribute="centerX" secondItem="iXN-33-Fam" secondAttribute="centerX" id="A4w-NO-YbX"/>
+                                    <constraint firstItem="4jx-lx-aJ9" firstAttribute="centerY" secondItem="iXN-33-Fam" secondAttribute="centerY" id="Iew-cm-WuE"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KDo-cc-jcf" firstAttribute="bottom" secondItem="iXN-33-Fam" secondAttribute="bottom" id="3E3-6t-AuH"/>
+                            <constraint firstAttribute="trailing" secondItem="hmB-R0-Jjr" secondAttribute="trailing" id="4eE-nV-OVc"/>
+                            <constraint firstItem="xdd-tu-064" firstAttribute="top" secondItem="KDo-cc-jcf" secondAttribute="top" constant="10" id="J7q-2m-lxu"/>
+                            <constraint firstItem="iXN-33-Fam" firstAttribute="top" secondItem="hmB-R0-Jjr" secondAttribute="bottom" id="Nik-ck-X5o"/>
+                            <constraint firstItem="iXN-33-Fam" firstAttribute="leading" secondItem="KDo-cc-jcf" secondAttribute="leading" id="SRj-1U-saz"/>
+                            <constraint firstItem="xdd-tu-064" firstAttribute="leading" secondItem="KDo-cc-jcf" secondAttribute="leading" id="Ygh-xB-HKV"/>
+                            <constraint firstItem="hmB-R0-Jjr" firstAttribute="leading" secondItem="KDo-cc-jcf" secondAttribute="leading" id="ckz-cq-u30"/>
+                            <constraint firstItem="KDo-cc-jcf" firstAttribute="trailing" secondItem="iXN-33-Fam" secondAttribute="trailing" id="d7p-xr-yfB"/>
+                            <constraint firstItem="hmB-R0-Jjr" firstAttribute="top" secondItem="xdd-tu-064" secondAttribute="bottom" constant="10" id="iXB-pM-aws"/>
+                            <constraint firstItem="xdd-tu-064" firstAttribute="trailing" secondItem="KDo-cc-jcf" secondAttribute="trailing" id="mkT-xs-AbN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KDo-cc-jcf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Il5-TK-mHX">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="ETm-BN-iLI">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UVd-mV-GUW">
+                                <rect key="frame" x="306" y="7" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="0.30196078430000001" green="0.50588235290000005" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="0.44975781440000001" green="0.65629261729999999" blue="0.96761590239999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButton:" destination="WEW-E2-fpu" eventType="touchUpInside" id="Kca-8s-OOL"/>
+                                </connections>
+                            </button>
+                            <color key="tintColor" red="0.30196078430000001" green="0.50588235290000005" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cameraPreviewView" destination="hmB-R0-Jjr" id="nUw-iy-dFF"/>
+                        <outlet property="captureButton" destination="4jx-lx-aJ9" id="Rpq-aT-lab"/>
+                        <outlet property="submitButton" destination="UVd-mV-GUW" id="kp5-gJ-urz"/>
+                        <outlet property="welcomeMessageLabel" destination="xdd-tu-064" id="I6f-cU-vgM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rdR-v9-mXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="460" y="147.97601199400302"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Camera-Button" width="116" height="116"/>
+    </resources>
+</document>

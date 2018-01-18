@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R8f-OZ-oM0">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Image Search View Controller-->
+        <scene sceneID="Dvw-No-dFg">
+            <objects>
+                <viewController id="R8f-OZ-oM0" customClass="ImageSearchViewController" customModule="FindMyFace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5P9-f7-B6T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1s-yk-keJ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.34506928920000002" green="0.90552228690000003" blue="0.51771396400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <navigationItem title="Title" id="idM-30-cGt">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ncy-hG-d8p">
+                                            <color key="tintColor" red="0.23921568630000001" green="0.60392156860000001" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="cancelButton:" destination="R8f-OZ-oM0" id="eMf-bK-8a1"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" id="uWx-io-Thd">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SlM-Bn-T0m">
+                                                <rect key="frame" x="307" y="7" width="52" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Search">
+                                                    <color key="titleColor" red="0.23921568630000001" green="0.60392156860000001" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="searchButton:" destination="R8f-OZ-oM0" eventType="touchUpInside" id="Uh7-B7-71y"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Os2-PQ-j7N">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <connections>
+                                    <segue destination="evq-8x-1TP" kind="embed" id="4lP-1U-e78"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="x1s-yk-keJ" firstAttribute="trailing" secondItem="gwc-uO-XCE" secondAttribute="trailing" id="BKf-pJ-G1s"/>
+                            <constraint firstAttribute="trailing" secondItem="Os2-PQ-j7N" secondAttribute="trailing" id="h3N-a5-YlR"/>
+                            <constraint firstItem="Os2-PQ-j7N" firstAttribute="top" secondItem="x1s-yk-keJ" secondAttribute="bottom" id="hTQ-CZ-FoC"/>
+                            <constraint firstItem="x1s-yk-keJ" firstAttribute="top" secondItem="gwc-uO-XCE" secondAttribute="top" id="kWh-p8-T7K"/>
+                            <constraint firstItem="gwc-uO-XCE" firstAttribute="bottom" secondItem="Os2-PQ-j7N" secondAttribute="bottom" id="mFE-gb-B54"/>
+                            <constraint firstItem="Os2-PQ-j7N" firstAttribute="leading" secondItem="gwc-uO-XCE" secondAttribute="leading" id="tzf-ah-eXq"/>
+                            <constraint firstItem="x1s-yk-keJ" firstAttribute="leading" secondItem="gwc-uO-XCE" secondAttribute="leading" id="ypr-PC-lD3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gwc-uO-XCE"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B9M-Bs-n6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="74" y="146"/>
+        </scene>
+        <!--NewPostLibrary-->
+        <scene sceneID="51x-nJ-DeA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewPostLibrary" id="evq-8x-1TP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ihS-ux-PK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="834" y="145"/>
+        </scene>
+    </scenes>
+</document>

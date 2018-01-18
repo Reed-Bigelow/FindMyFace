@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0597596E6F2768C80EA473353D0B3094'
+               BlueprintIdentifier = 'BF3B399313784107538633C522C7A133'
                BlueprintName = 'Pods-FindMyFace'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods-FindMyFace.framework'>

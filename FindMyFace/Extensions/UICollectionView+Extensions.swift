@@ -24,4 +24,10 @@ extension UICollectionView {
         let identifier = String(describing: T.self)
         register(T.self, forCellWithReuseIdentifier: identifier)
     }
+    
+    func registerNib<T: UICollectionViewCell>(_ cellType: T.Type) {
+        let identifier = String(describing: T.self)
+        let nib = UINib(nibName: identifier, bundle: nil)
+        register(nib, forCellWithReuseIdentifier: identifier)
+    }
 }

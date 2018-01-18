@@ -1,4 +1,3 @@
-//
 //  NewPostCameraViewController.swift
 //  FindMyFace
 //
@@ -51,7 +50,11 @@ class NewPostCameraViewController: UIViewController, AVCapturePhotoCaptureDelega
         captureSession?.addOutput(capturePhotoOutput!)
         
         // Add Preview
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+        guard let session = captureSession else {
+            return
+        }
+        
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
         videoPreviewLayer?.frame = cameraPreviewView.layer.frame
         videoPreviewLayer?.videoGravity = .resizeAspectFill
         videoPreviewLayer?.connection?.videoOrientation = .portrait
@@ -63,19 +66,19 @@ class NewPostCameraViewController: UIViewController, AVCapturePhotoCaptureDelega
     
     // MARK: - Actions
     @IBAction func captureImage(_ sender: Any) {
-        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        let settings = AVCapturePhotoSettings()
         
         capturePhotoOutput?.capturePhoto(with: settings, delegate: self)
     }
     
     // MARK: - Capture Photo Delegate
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        let image = UIImage(data: photo.fileDataRepresentation()!)
         
-        // Create the image
-        let image = UIImage(cgImage: (photo.cgImageRepresentation()?.takeRetainedValue())!, scale: 1.0, orientation: UIImageOrientation.right)
-        
-        // Alert that an image was added
-         delegate?.didTakePhoto(image)
+        if let image = image?.fixedOrientation() {
+            // Alert that an image was added
+            delegate?.didTakePhoto(image)
+        }
         
         // Create the image view
         let view = UIImageView(image: image)

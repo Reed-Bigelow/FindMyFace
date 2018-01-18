@@ -35,4 +35,15 @@ struct Constants {
         static let fontName = "Times"
         static let size12 = UIFont(name: Constants.fonts.fontName, size: 12)
     }
+    
+    struct Colors {
+        
+        static let profileSubviewButtonSelected = UIColor(red: 61 / 255, green: 154 / 255, blue: 239 / 255, alpha: 1.0)
+        static let profileSubviewButtonDeselected = UIColor(red: 152 / 255, green: 153 / 255, blue: 154 / 255, alpha: 1.0)
+    }
+    
+    struct DeviceType {
+        
+        static let iPhoneX = ScreenDimensions.HEIGHT == 812
+    }
 }

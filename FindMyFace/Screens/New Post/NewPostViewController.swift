@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class NewPostViewController: UIViewController {
     
@@ -48,7 +49,15 @@ class NewPostViewController: UIViewController {
             return
         }
         
-        RestClientService.uploadData(with: image, ["user_id": "8dd5fe13-1273-4138-b1ec-ac168b2480b5"])
+        SVProgressHUD.show()
+        
+        RestClientService.uploadData(with: image, .upload, ["user_id": UserDefaults.value(forKey: .id) as! String]) { success, _  in
+            SVProgressHUD.showSuccess(withStatus: "Posted!")
+            
+            if success {
+                self.dismiss(animated: true)
+            }
+        }
     }
     
     // MARK: - Navigation

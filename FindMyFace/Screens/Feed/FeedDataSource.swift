@@ -12,10 +12,15 @@ class FeedDataSource: NSObject, UICollectionViewDataSource {
     
     // MARK: - Properties
     private var posts: [Post]?
+    private var viewController: FeedItemCellViewDelegate
     
     // MARK: - Public
     func refresh(with posts: [Post]) {
         self.posts = posts
+    }
+    
+    init(_ viewController: FeedItemCellViewDelegate) {
+        self.viewController = viewController
     }
     
     // MARK: - Datasource
@@ -25,7 +30,8 @@ class FeedDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(FeedItemCell.self, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(FeedItemCellView.self, for: indexPath)
+        cell.delegate = viewController
         cell.setup(with: posts![indexPath.row])
         return cell
     }

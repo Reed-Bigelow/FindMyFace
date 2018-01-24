@@ -90,7 +90,7 @@ class ProfileViewController: UIViewController {
                 return
             }
             
-            self.currentPosts = posts
+            self.currentPosts = posts.sorted { $0.timestamp ?? Date() > $1.timestamp ?? Date() }
             self.reloadData()
         }
     }

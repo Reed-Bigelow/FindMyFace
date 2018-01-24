@@ -7,7 +7,7 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To acces the library to upload photos.</string>
 	<key>HostUrl</key>
-	<string>http://0.0.0.0:8080/</string>
+	<string>http://65.78.53.44:8080/</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -52,6 +52,10 @@
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>0.0.0.0</key>
+			<string></string>
+			<key>65.78.53.44</key>
+			<string></string>
+			<key>api.reedbigelow.com</key>
 			<string></string>
 		</dict>
 		<key>NSAllowsArbitraryLoadsInWebContent</key>

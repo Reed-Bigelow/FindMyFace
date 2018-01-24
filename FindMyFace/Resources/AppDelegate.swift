@@ -16,7 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        UserDefaults.setValue("7cbc70e1-f5f3-4b11-ab20-ed52c2ca8be7", forKey: .id)
+//        UserDefaults.setValue("7cbc70e1-f5f3-4b11-ab20-ed52c2ca8be7", forKey: .id)
+        
+        UserDefaults.setValue(nil, forKey: .id)
         
         if UserDefaults.value(forKey: .id) == nil {
             let vC = UIStoryboard(name: "Welcome", bundle: nil).instantiateInitialViewController()

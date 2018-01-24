@@ -57,7 +57,7 @@ class CheckForAccountViewController: UIViewController {
                 
                 self.present(vC, animated: true)
             } else {
-                print(rawJson!)
+                print(rawJson)
             }
         }
     }

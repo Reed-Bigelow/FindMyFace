@@ -1,4 +1,4 @@
-![](https://travis-ci.org/Reed-Bigelow/FindMyFace.svg?branch=master)
+[![Build Status](https://travis-ci.org/Reed-Bigelow/FindMyFace.svg?branch=master)](https://travis-ci.org/Reed-Bigelow/FindMyFace)
 # FindMyFace
 ## Instagram remake that implements auto face detection
 An Instagram remake that implements face detection for:
